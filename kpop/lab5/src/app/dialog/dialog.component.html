@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="close-dialog-button">
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="info">
+    <mat-card>
+      <mat-card-title>
+        {{ data.title }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ data.body }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

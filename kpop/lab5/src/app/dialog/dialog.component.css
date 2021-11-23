@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+  text-align: center;
+}
+
+.close-dialog-button {
+  position: relative;
+  width: 100%;
+}
+
+.close-dialog-button button {
+  position: absolute;
+  right: 0;
+}
+
+.info {
+  padding-top: 50px;
+}
