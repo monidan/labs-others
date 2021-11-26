@@ -1,0 +1,52 @@
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col sizeLg="8" sizeSm="3" sizeMd="6">
+      <div class="spinner" [ngClass]="{'spinner--active': weather.length === 0}">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+      <div class="table" [ngClass]="{'table--loading': weather.length === 0}">
+        <table>
+          <thead>
+            <tr>
+              <th *ngFor="let column of columnsToDisplay">
+                {{ column }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let w of weather">
+              <td>
+                {{ w.title }}
+              </td>
+              <td>
+                {{ w.consolidated_weather[0].max_temp.toFixed(2) }}
+              </td>
+              <td>
+                {{ w.consolidated_weather[0].humidity }} %
+              </td>
+              <td>
+                {{ w.consolidated_weather[0].visibility.toFixed(2) }} %
+              </td>
+              <td>
+                {{ w.consolidated_weather[0].weather_state_name }}
+              </td>
+              <td>
+                <ion-button color="tertiary" *ngIf="!w.isFavorite; else unFavorite" (click)="addFavorite(w)">
+                  <ion-icon name="star"></ion-icon>
+                </ion-button>
+                <ng-template #unFavorite>
+                  <ion-button color="danger" (click)="removeFavorite(w)">
+                    <ion-icon name="star"></ion-icon>
+                  </ion-button>
+                </ng-template>
+                <ion-button color="primary" (click)="initModal(w)">
+                  <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+                </ion-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

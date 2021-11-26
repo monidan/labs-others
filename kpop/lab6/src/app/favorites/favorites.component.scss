@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  padding-top: 2.5rem;
+}
+
+th, td {
+  border: 1px solid rgba(black, 0.6);
+  text-align: center;
+  padding: 0.3rem 0.5rem;
+}
+
+th {
+  background-color: rgba(purple, 0.8);
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(blue, 0.1);
+}
+

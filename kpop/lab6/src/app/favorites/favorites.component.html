@@ -1,0 +1,40 @@
+<div class="favorites">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let column of columnsToDisplay">
+          {{ column }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let favorite of favorites">
+        <td>
+          {{ favorite.title }}
+        </td>
+        <td>
+          {{ favorite.consolidated_weather[0].max_temp.toFixed(2) }}
+        </td>
+        <td>
+          {{ favorite.consolidated_weather[0].humidity }} %
+        </td>
+        <td>
+          {{ favorite.consolidated_weather[0].visibility.toFixed(2) }} %
+        </td>
+        <td>
+          {{ favorite.consolidated_weather[0].weather_state_name }}
+        </td>
+        <td>
+          <ion-button color="tertiary" *ngIf="!favorite.isFavorite; else unFavorite">
+            <ion-icon name="star"></ion-icon>
+          </ion-button>
+          <ng-template #unFavorite>
+            <ion-button color="danger" (click)="removeFavorite(favorite)">
+              <ion-icon name="star"></ion-icon>
+            </ion-button>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
