@@ -1,0 +1,29 @@
+.form {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    padding: 1rem 1.5rem;
+    background-color: white;
+
+    box-shadow: 0 0 15px 1px rgba(black, 0.3);
+
+    label {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        padding-bottom: 5px;
+      }
+    }
+
+    .extra-info {
+      label {
+        flex-direction: row;
+        align-items: center;
+        column-gap: 5px;
+      }
+    }
+  }
+}

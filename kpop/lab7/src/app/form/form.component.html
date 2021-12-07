@@ -1,0 +1,86 @@
+<div class="form">
+  <div>
+    <h1 class="text-center font-bold text-4xl text-white py-4">
+      Регистрация почтового ящика
+    </h1>
+  </div>
+  <form [formGroup]="signUpForm" (ngSubmit)="validateInputs($event)">
+
+    <div class="personal-info">
+      <label for="surname">
+        <span>Фамилия: </span>
+        <input type="text" id="surname" formControlName="surname" class="border border-blue-300">
+        <p *ngIf="signUpForm.controls.surname.status === 'INVALID'"  class="text-red-600">
+          Ошибка!
+        </p>
+      </label>
+      <label for="name">
+        <span>Имя: </span>
+        <input type="text" id="name" formControlName="name" class="border border-blue-300">
+        <p *ngIf="signUpForm.controls.name.status === 'INVALID'" class="text-red-600">
+          Ошибка!
+        </p>
+      </label>
+    </div>
+
+    <div class="mail-info">
+      <label for="address">
+        <span>Ваш адрес:</span>
+        <input type="text" id="address" formControlName="address" class="border border-blue-300">
+        <p *ngIf="signUpForm.controls.address.status === 'INVALID'" class="text-red-600">
+          Ошибка!
+        </p>
+      </label>
+      <label for="password">
+        <span>Ваш пароль:</span>
+        <input type="password" id="password" formControlName="password" class="border border-blue-300">
+      </label>
+      <label for="passwordConfirmation">
+        <span>Подтвердите пароль:</span>
+        <input type="password" id="passwordConfirmation" formControlName="passwordConfirmation" class="border border-blue-300">
+        <p *ngIf="signUpForm.controls.passwordConfirmation.value !== signUpForm.controls.password.value" class="text-red-600">
+          Ошибка!
+        </p>
+      </label>
+    </div>
+
+    <div class="extra-info">
+      <div class="ads">
+        <p>Желаете получать рекламные рассылки?</p>
+        <label for="yes" class="pl-4">
+          <span>Да</span>
+          <input type="radio" value="Да" name="ads" id="yes" formControlName="ads">
+        </label>
+        <label for="no" class="pl-4">
+          <span>Нет</span>
+          <input type="radio" value="Нет" name="ads" id="no" formControlName="ads">
+        </label>
+        <p *ngIf="signUpForm.controls.ads.status === 'INVALID'" class="error text-red-600">
+          Выберите один из вариантов
+        </p>
+      </div>
+      <div class="weather-forecast">
+        <p>Желаете получать прогноз погоды каждый день?</p>
+        <label for="yes" class="pl-4">
+          <span>Да</span>
+          <input type="radio" id="yes" value="Да" formControlName="weatherForecast">
+        </label>
+        <label for="no" class="pl-4">
+          <span>Нет</span>
+          <input type="radio" id="no" value="Нет" formControlName="weatherForecast">
+        </label>
+        <p *ngIf="signUpForm.controls.weatherForecast.status === 'INVALID'" class="error text-red-600">
+          Выберите один из вариантов
+        </p>
+      </div>
+    </div>
+
+    <input type="submit" value="Отправить" class="border cursor-pointer border-blue-500 rounded py-2 uppercase font-bold">
+    <p *ngIf="isFormPostError" class="form-error text-red-600 text-center">Ошибка! Заполните правильно форму!</p>
+  </form>
+  <div class="form-sent--success">
+    <p *ngIf="isFormSent">
+      Sent
+    </p>
+  </div>
+</div>
